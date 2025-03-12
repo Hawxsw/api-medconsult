@@ -1,0 +1,21 @@
+node_modules/
+.env
+.env.*
+!.env.example
+dist/
+build/
+coverage/
+.vscode/
+.idea/
+*.log
+tmp/
+.DS_Store
+
+# Prisma
+prisma/migrations/
+prisma/*.db
+prisma/.env
+
+# Outros arquivos do Prisma que você pode querer ignorar
+*.sqlite
+*.sqlite-journal

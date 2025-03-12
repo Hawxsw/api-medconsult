@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_DB: ${DB_NAME?err}
+      POSTGRES_USER: ${DB_USER?err}
+      POSTGRES_PASSWORD: ${DB_PASS?err}
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+    networks:
+      - default 
+
+networks:
+  default: 
+    driver: bridge  
+volumes:
+  data:
