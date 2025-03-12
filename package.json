@@ -6,11 +6,13 @@
     "description": "A simple medic app",
     "private": false,
     "scripts": {
-      "build": "tsc && prisma generate",
-      "start": "node dist/server.js",
+      "build": "tsc",
+      "start": "pnpm run build && pnpm run prisma:generate && pnpm run prisma:migrate && node dist/server.js",
       "start:dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+      "start:prod": "node dist/server.js",
       "prisma:generate": "prisma generate",
-      "prisma:migrate": "prisma migrate deploy"
+      "prisma:migrate": "prisma migrate deploy",
+      "render-start": "pnpm run prisma:migrate && pnpm run start:prod"
     },
     "devDependencies": {
       "@types/bcryptjs": "^2.4.6",
@@ -29,7 +31,6 @@
       "eslint-plugin-prettier": "^4.0.0",
       "prettier": "^2.5.1",
       "prisma": "^5.10.2",
-      "ts-node": "^10.5.0",
       "ts-node-dev": "^1.1.8",
       "typescript": "^4.5.5"
     },
@@ -46,7 +47,8 @@
       "mysql2": "^2.3.3",
       "typeorm": "^0.2.44",
       "uuid": "^8.3.2",
-      "uuidv4": "^6.2.12"
+      "uuidv4": "^6.2.12",
+      "ts-node": "^10.5.0"
     },
     "prisma": {
       "seed": "ts-node --transpile-only prisma/seed.ts"
