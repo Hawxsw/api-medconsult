@@ -3,6 +3,7 @@ import { PatientsService } from './patients.service';
 import { PatientsController } from './patients.controller';
 import { PrismaService } from '../../prisma/prisma.service';
 import { JwtModule } from '@nestjs/jwt';
+import { PaginationService } from '../pagination/pagination.service';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { JwtModule } from '@nestjs/jwt';
     }),
   ],
   controllers: [PatientsController],
-  providers: [PatientsService, PrismaService],
+  providers: [PatientsService, PrismaService, PaginationService],
 })
 export class PatientsModule {}
